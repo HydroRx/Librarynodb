@@ -1,11 +1,16 @@
 const myLibrary = [];
 
-// Constructor function for Book
-function Book(author, title, pages, read) {
-  this.author = author;
-  this.title = title;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(author, title, pages, read) {
+    this.author = author;
+    this.title = title;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  toggleRead() {
+    this.read = !this.read;
+  }
 }
 
 // Function to add a book to the library
@@ -85,6 +90,6 @@ function handleDelete(event) {
 function handleToggleRead(event) {
   const index = event.target.closest(".book").dataset.index;
   const book = myLibrary[index];
-  book.read = !book.read; // Toggle the read status
+  book.toggleRead(); // Toggle the read status
   updateBookGrid();
 }
